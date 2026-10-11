@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADF2027: A Day With The Foxes | Holy Angel University School of Computing</title>
+  <meta name="description" content="ADF2027 (A Day With Foxes) is an annual School of Computing event at Holy Angel University designed to allow students to experience computing culture, organizations, and activities.">
+  <meta property="og:title" content="ADF2027: A Day With The Foxes">
+  <meta property="og:description" content="Annual School of Computing event website for Holy Angel University featuring student organizations, interactive activities, and event schedule.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Typography: Google Fonts for Retro Gaming & Cyber Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Press+Start+2P&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS RESET & DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      --color-cream: #fbf5ee;
+      --color-cream-card: #f3e9db;
+      --color-cream-border: #e2d2be;
+      --color-espresso: #160c07;
+      --color-espresso-card: #20130c;
+      --color-espresso-border: #3d2215;
+      --color-orange-strip: #ce5416;
+      --color-orange-primary: #f26522;
+      --color-orange-bright: #ff7a29;
+      --color-orange-dark: #b84107;
+      --color-orange-glow: rgba(242, 101, 34, 0.4);
+      --color-white: #ffffff;
+      --color-text-dark: #20130c;
+      --color-text-light: #fdfbf7;
+      --color-text-muted: #cdb9ab;
+      --color-text-muted-dark: #7a6354;
+      
+      --font-display: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-hand: 'Caveat', cursive;
+
+      --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-pill: 9999px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-cream);
+      color: var(--color-text-dark);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: var(--color-cream);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    img, video {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Pixel art heart decorative icons */
+    .pixel-hearts {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      user-select: none;
+    }
+    .heart-svg {
+      width: 16px;
+      height: 15px;
+      fill: #ea580c;
+      display: inline-block;
+      vertical-align: middle;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+    }
+
+    /* Container utility */
+    .container {
+      width: 100%;
+      max-width: 1380px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(16px, 4vw, 48px);
+      padding-right: clamp(16px, 4vw, 48px);
+    }
+
+    /* ==========================================================================
+       1. HEADER / NAVIGATION
+       ========================================================================== */
+    .site-header {
+      background-color: var(--color-espresso);
+      color: var(--color-white);
+      border-bottom: 2px solid #2e190f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mascot-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f26522, #b84107);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px var(--color-orange-glow);
+      flex-shrink: 0;
+      border: 1px solid #ff7a29;
+      overflow: hidden;
+    }
+
+    .brand-mascot-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-logo-wrap:has(.brand-mascot-img[src]:not([src=""])) .mascot-fallback-svg {
+      display: none;
+    }
+
+    .mascot-avatar svg {
+      width: 26px;
+      height: 26px;
+      fill: #ffffff;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .brand-title .brand-adf {
+      color: #ffffff;
+    }
+
+    .brand-title .brand-year {
+      color: var(--color-orange-primary);
+    }
+
+    .brand-subtitle {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #cdb9ab;
+      margin-top: 3px;
+    }
+
+    .brand-subtitle .highlight-foxes {
+      color: var(--color-orange-bright);
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 28px;
+      background: #422517;
+      margin: 0 4px;
+    }
+
+    .brand-tagline {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #b59b8a;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2vw, 28px);
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5d7cc;
+      text-transform: capitalize;
+      letter-spacing: 0.3px;
+      padding: 6px 4px;
+      position: relative;
+    }
+
+    .nav-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-orange-primary);
+      stroke-width: 2.2;
+      flex-shrink: 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-orange-primary);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      color: var(--color-white);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #2a170e;
+      border: 1px solid #4a2817;
+      color: #ffffff;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       2. HERO SECTION & POSTER CONTAINER (Clean Image Frame)
+       ========================================================================== */
+    .hero-section {
+      background-color: var(--color-cream);
+      padding: clamp(36px, 6vw, 68px) 0 clamp(40px, 6vw, 72px);
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: center;
+    }
+
+    .hero-poster-col {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .arch-backdrop {
+      position: absolute;
+      top: -16px;
+      left: -20px;
+      width: 180px;
+      height: 220px;
+      border-top-left-radius: 90px;
+      border-top-right-radius: 90px;
+      background-color: #eedcc9;
+      opacity: 0.65;
+      z-index: 0;
+    }
+
+    /* Outer poster card matching the CMS double border and margins */
+    .poster-card-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 580px;
+      aspect-ratio: 16 / 11;
+      background: #140803;
+      border: 4px solid #140803;
+      box-shadow: inset 0 0 0 2px #ea580c, 0 16px 36px rgba(45, 23, 13, 0.35);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-poster-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 14px;
+    }
+
+    /* Clean placeholder when src is empty so you see exactly where the poster goes */
+    .hero-poster-image[src=""],
+    .hero-poster-image:not([src]) {
+      min-height: 360px;
+      background: #150904 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="%23ea580c" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>') no-repeat center center;
+      border: 2px dashed rgba(234, 88, 12, 0.5);
+    }
+
+    /* Pixel cursor pointing decoration */
+    .pixel-cursor-pointer {
+      position: absolute;
+      bottom: -22px;
+      left: 20px;
+      width: 44px;
+      height: 44px;
+      z-index: 2;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+
+    .hero-hearts-row {
+      margin-top: 24px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* About the Event Card */
+    .about-card {
+      background-color: var(--color-espresso-card);
+      border: 2px solid var(--color-espresso-border);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 42px);
+      color: var(--color-text-light);
+      box-shadow: 0 16px 40px rgba(27, 14, 7, 0.28);
+      position: relative;
+    }
+
+    .about-card-hearts {
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 700;
+      color: var(--color-white);
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .about-lead-text {
+      font-family: var(--font-display);
+      font-size: clamp(14px, 1.3vw, 16px);
+      line-height: 1.6;
+      color: #eedacf;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+      text-transform: capitalize;
+    }
+
+    .about-sub-lead {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--color-orange-bright);
+      margin-bottom: 10px;
+      text-transform: capitalize;
+    }
+
+    .about-org-list {
+      list-style: none;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about-org-list li {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: #f7e6dc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-org-list li::before {
+      content: '•';
+      color: var(--color-orange-primary);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .btn-fox-adventure {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--color-orange-bright) 0%, var(--color-orange-primary) 100%);
+      color: var(--color-white);
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 13px 26px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 6px 18px rgba(242, 101, 34, 0.45);
+      transition: all var(--transition-smooth);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-fox-adventure:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(242, 101, 34, 0.6);
+      background: linear-gradient(135deg, #ff8c42 0%, var(--color-orange-bright) 100%);
+    }
+
+    .btn-fox-adventure svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      transition: transform var(--transition-fast);
+    }
+
+    .btn-fox-adventure:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       3. EVENT DETAILS & PHOTO STRIP (Warm Orange Section)
+       ========================================================================== */
+    .details-section {
+      background: linear-gradient(135deg, #d35400 0%, #b84307 100%);
+      padding: clamp(48px, 7vw, 84px) 0;
+      position: relative;
+      overflow: hidden;
+      color: var(--color-white);
+    }
+
+    .details-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.04),
+        rgba(0, 0, 0, 0.04) 20px,
+        transparent 20px,
+        transparent 40px
+      );
+      pointer-events: none;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-info-card {
+      background-color: #1a0e08;
+      border: 2px solid #5a2c14;
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 38px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+
+    .event-info-card-hearts {
+      position: absolute;
+      top: -12px;
+      left: 18px;
+    }
+
+    .card-header-with-icon {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-header-icon {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-orange-bright);
+    }
+
+    .card-header-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--color-orange-bright);
+      stroke-width: 2.2;
+    }
+
+    .event-info-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 700;
+      color: var(--color-white);
+      letter-spacing: 0.5px;
+    }
+
+    .info-subhead {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--color-orange-bright);
+      margin-bottom: 6px;
+    }
+
+    .info-expect-desc {
+      font-family: var(--font-display);
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #edd9cc;
+      margin-bottom: 24px;
+      text-transform: capitalize;
+    }
+
+    .details-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-top: 1px solid #3d1f10;
+      padding-top: 20px;
+    }
+
+    .details-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-family: var(--font-display);
+      font-size: 14px;
+    }
+
+    .details-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      color: var(--color-orange-bright);
+      margin-top: 1px;
+    }
+
+    .details-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--color-orange-bright);
+      stroke-width: 2;
+    }
+
+    .details-label {
+      font-weight: 700;
+      color: #ffffff;
+      margin-right: 6px;
+      white-space: nowrap;
+    }
+
+    .details-val {
+      color: #f7e2d4;
+      line-height: 1.4;
+    }
+
+    /* Polaroids & Gallery */
+    .polaroid-gallery-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .see-you-there-text {
+      font-family: var(--font-hand);
+      font-size: clamp(34px, 4.5vw, 48px);
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
+      margin-bottom: 8px;
+      transform: rotate(-3deg);
+      align-self: flex-end;
+      margin-right: 40px;
+    }
+
+    .polaroids-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+
+    .polaroid-card {
+      background: #ffffff;
+      padding: 10px 10px 24px 10px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+      border-radius: 4px;
+      position: relative;
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+      width: 210px;
+    }
+
+    .polaroid-card:hover {
+      transform: scale(1.04) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
+    }
+
+    .polaroid-card:nth-child(1) {
+      transform: rotate(-6deg);
+    }
+    .polaroid-card:nth-child(2) {
+      transform: rotate(4deg) translateY(-10px);
+    }
+    .polaroid-card:nth-child(3) {
+      transform: rotate(-3deg) translateY(12px);
+    }
+
+    .tape-strip {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 68px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(2px);
+      border-left: 2px dashed rgba(0, 0, 0, 0.15);
+      border-right: 2px dashed rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+
+    .polaroid-media-box {
+      width: 100%;
+      height: 140px;
+      background: #1e110a;
+      overflow: hidden;
+      border: 1px solid #e0d4c8;
+      position: relative;
+    }
+
+    .polaroid-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .polaroid-caption {
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #382417;
+      text-align: center;
+      font-family: var(--font-display);
+    }
+
+    /* ==========================================================================
+       4. FEATURED ORGANIZATIONS (With Inline Logos Beside Org Names)
+       ========================================================================== */
+    .organizations-section {
+      background-color: var(--color-espresso);
+      color: var(--color-white);
+      padding: clamp(60px, 8vw, 96px) 0;
+      position: relative;
+      border-top: 4px solid #b84307;
+    }
+
+    .org-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: clamp(36px, 5vw, 56px);
+      flex-wrap: wrap;
+    }
+
+    .org-title-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .org-section-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f26522, #b84107);
+      border: 2px solid #ff7a29;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px var(--color-orange-glow);
+      flex-shrink: 0;
+    }
+
+    .org-section-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: #ffffff;
+    }
+
+    .org-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      color: var(--color-white);
+    }
+
+    .org-section-tagline {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      color: #b59b8a;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+    }
+
+    .org-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(16px, 2vw, 24px);
+    }
+
+    .org-card {
+      background: #190d07;
+      border: 1px solid #4a2412;
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all var(--transition-smooth);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .org-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-orange-primary);
+      box-shadow: 0 14px 32px rgba(242, 101, 34, 0.25);
+    }
+
+    .org-card-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .org-badge-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #2a150c;
+      border: 1px solid var(--color-orange-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-orange-bright);
+      margin-bottom: 16px;
+      box-shadow: 0 0 10px rgba(242, 101, 34, 0.25);
+    }
+
+    .org-badge-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--color-orange-bright);
+      stroke-width: 2.2;
+    }
+
+    .org-card-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-white);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      line-height: 1.35;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .org-card-desc {
+      font-family: var(--font-display);
+      font-size: 11px;
+      line-height: 1.6;
+      color: #ceb7a7;
+      text-align: justify;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    /* Org Card Footer matching CMS */
+    .org-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #3d1c0c;
+      padding-top: 16px;
+      margin-top: auto;
+      gap: 12px;
+    }
+
+    .org-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .org-inline-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Placeholder when org logo src is empty */
+    .org-inline-logo[src=""],
+    .org-inline-logo:not([src]) {
+      background: #110702 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23ff7a29" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>') no-repeat center center;
+      border: 1px dashed #7a3c17;
+    }
+
+    .org-name-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #100602;
+      border: 1.5px solid var(--color-orange-primary);
+      color: var(--color-orange-bright);
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .org-arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid #ff7a29;
+      background: #200f07;
+      color: var(--color-orange-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+
+    .org-card:hover .org-arrow-btn {
+      background: var(--color-orange-primary);
+      color: var(--color-white);
+      border-color: var(--color-orange-bright);
+      transform: translateX(3px);
+    }
+
+    .org-arrow-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2.6;
+    }
+
+    /* ==========================================================================
+       5. VIDEO SHOWCASE SECTION
+       ========================================================================== */
+    .video-section {
+      background-color: var(--color-espresso);
+      color: var(--color-white);
+      padding: clamp(40px, 6vw, 72px) 0 clamp(60px, 8vw, 96px);
+      position: relative;
+    }
+
+    .video-divider-strip {
+      height: 4px;
+      background: linear-gradient(90deg, #ff7a29, #b84107, transparent);
+      margin-bottom: clamp(36px, 5vw, 64px);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .video-player-wrapper {
+      position: relative;
+      border: 3px solid #3d2012;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #100602;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .promo-video-tag {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-player-wrapper:has(.promo-video-tag[src]:not([src=""])) .video-art-mockup {
+      display: none;
+    }
+
+    .video-art-mockup {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, #4a2818 0%, #150904 90%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .video-newspaper-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-image: repeating-linear-gradient(0deg, #ffffff, #ffffff 1px, transparent 1px, transparent 6px);
+      pointer-events: none;
+    }
+
+    .play-btn-pulse {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--color-orange-primary);
+      border: 3px solid #ffffff;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px var(--color-orange-glow);
+      transition: all var(--transition-fast);
+      position: relative;
+      z-index: 2;
+    }
+
+    .play-btn-pulse:hover {
+      transform: scale(1.1);
+      background: var(--color-orange-bright);
+    }
+
+    .play-btn-pulse svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      margin-left: 4px;
+    }
+
+    .video-info-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-badge-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      color: var(--color-white);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .video-sub-title {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .video-sub-title .highlight-orange {
+      color: var(--color-orange-bright);
+    }
+
+    .video-desc {
+      font-family: var(--font-display);
+      font-size: 15px;
+      line-height: 1.6;
+      color: #d1bbaa;
+      letter-spacing: 0.2px;
+      margin-bottom: 28px;
+    }
+
+    /* ==========================================================================
+       6. ARCADE / READY TO JOIN (Clean Image Frame)
+       ========================================================================== */
+    .cta-arcade-section {
+      background-color: var(--color-cream);
+      padding: clamp(54px, 7vw, 92px) 0;
+      position: relative;
+      border-top: 2px solid var(--color-cream-border);
+    }
+
+    .arcade-sub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: clamp(36px, 5vw, 60px);
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e5d4be;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .arcade-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(36px, 5vw, 68px);
+      align-items: center;
+    }
+
+    .arcade-machine-wrap {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Clean arcade frame for user image with CMS double border */
+    .arcade-cabinet-frame {
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 1 / 1;
+      background: #140803;
+      border: 4px solid #140803;
+      box-shadow: inset 0 0 0 2px #ea580c, 0 20px 48px rgba(34, 18, 9, 0.32);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arcade-graphic-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 14px;
+    }
+
+    /* Placeholder when arcade image src is empty */
+    .arcade-graphic-img[src=""],
+    .arcade-graphic-img:not([src]) {
+      min-height: 360px;
+      background: #150904 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="%23ea580c" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>') no-repeat center center;
+      border: 2px dashed rgba(234, 88, 12, 0.5);
+    }
+
+    /* Ready to join content column */
+    .cta-content-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cta-mascot-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f26522, #b84107);
+      border: 2px solid #ff7a29;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(242, 101, 34, 0.35);
+      margin-bottom: 20px;
+    }
+
+    .cta-mascot-avatar svg {
+      width: 38px;
+      height: 38px;
+      fill: #ffffff;
+    }
+
+    .cta-heading-main {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      color: var(--color-text-dark);
+      margin-bottom: 6px;
+    }
+
+    .cta-heading-sub {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.05;
+      color: var(--color-orange-primary);
+      margin-bottom: 20px;
+    }
+
+    .cta-body-desc {
+      font-family: var(--font-display);
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.6;
+      color: var(--color-text-muted-dark);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    /* ==========================================================================
+       7. FOOTER & CIRCULAR SEALS
+       ========================================================================== */
+    .site-footer {
+      background: linear-gradient(135deg, #e65c00 0%, #cb4b04 100%);
+      color: var(--color-white);
+      padding: clamp(36px, 5vw, 52px) 0 24px;
+      border-top: 3px solid #ff7a29;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .footer-institution-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-seals-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-seal-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .footer-seal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .footer-seal-badge:has(.footer-seal-img[src]:not([src=""])) .footer-seal-svg {
+      display: none;
+    }
+
+    .footer-seal-svg {
+      width: 28px;
+      height: 28px;
+      fill: #b84107;
+    }
+
+    .footer-institution-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+      max-width: 220px;
+    }
+
+    .footer-contacts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .footer-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff6ee;
+    }
+
+    .footer-contact-row svg {
+      width: 15px;
+      height: 15px;
+      stroke: #ffffff;
+      stroke-width: 2.2;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-row a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.85);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1080px) {
+      .org-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 868px) {
+      .hero-grid,
+      .details-grid,
+      .video-grid,
+      .arcade-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .site-nav {
+        display: none;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--color-espresso);
+        padding: 24px;
+        border-bottom: 2px solid var(--color-orange-primary);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .brand-tagline, .brand-divider {
+        display: none;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .org-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .polaroid-card {
+        width: 100%;
+        max-width: 260px;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SECTION 1: HEADER / NAVIGATION
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-group">
+        <a href="#hero" class="brand-logo-wrap" title="ADF2027 Home">
+          
+          <div class="mascot-avatar" aria-hidden="true">
+            <!-- INSERT YOUR IMAGE HERE: Fox Mascot Logo (e.g. mascot-logo.png) -->
+            <img src="vids,images/images.png" alt="Fox Mascot Logo" class="brand-mascot-img" width="38" height="38" />
+            
+            <!-- Fallback Mascot SVG -->
+            <svg class="mascot-fallback-svg" viewBox="0 0 24 24">
+              <path d="M12 2L15 8H9L12 2ZM4 6L8 10L6 14L2 8L4 6ZM20 6L22 8L18 14L16 10L20 6ZM5 14L8 12L12 17L16 12L19 14L15 21H9L5 14Z" />
+            </svg>
+          </div>
+
+          <div class="brand-text">
+            <div class="brand-title">
+              <span class="brand-adf">ADF</span><span class="brand-year">2027</span>
+            </div>
+            <div class="brand-subtitle">
+              A DAY WITH <span class="highlight-foxes">THE FOXES</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="brand-divider"></div>
+        <div class="brand-tagline">Rooted In Code, Driven By Purpose.</div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="site-nav" id="site-nav">
+        <a href="#hero" class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Home</span>
+        </a>
+        <a href="#about" class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span>About</span>
+        </a>
+        <a href="#organizations" class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Organizations</span>
+        </a>
+        <a href="#video" class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+          <span>Video</span>
+        </a>
+        <a href="#details" class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          <span>Gallery</span>
+        </a>
+        <a href="#contact" class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- ==========================================================================
+         SECTION 2: HERO & ABOUT THE EVENT (Poster Image Slot)
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        
+        <!-- Left Column: Event Poster Image Slot -->
+        <div class="hero-poster-col">
+          <div class="arch-backdrop" aria-hidden="true"></div>
+
+          <div class="poster-card-wrap">
+            <!-- INSERT YOUR IMAGE HERE: ADF2027 Main Event Poster (e.g. adf2027-poster.png) -->
+            <img src="vids,images/829940086_1736469887466023_4592811375484850078_n.png" alt="ADF 2027: A Day With The Foxes Event Poster" class="hero-poster-image" width="580" height="420" />
+          </div>
+
+          <!-- Pixel cursor arrow pointing to poster -->
+          <svg class="pixel-cursor-pointer" viewBox="0 0 24 24" fill="#ffffff" stroke="#160d07" stroke-width="1.5">
+            <path d="M4 2L4 20L8.5 15.5L12.5 22.5L15.5 21L11.5 14L18 14L4 2Z" />
+          </svg>
+
+          <!-- Pixel Hearts below poster -->
+          <div class="hero-hearts-row">
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+        </div>
+
+        <!-- Right Column: About The Event -->
+        <div class="about-card" id="about">
+          <div class="about-card-hearts">
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+
+          <h1 class="about-title">About the Event</h1>
+
+          <p class="about-lead-text">
+            ADF (A Day With Foxes) Is An Annual School Of Computing Event Designed To Allow Students, Especially Incoming And Non-Major Students, To Experience The Culture, Activities, Specializations, And Student Organizations Within The School Of Computing.
+          </p>
+
+          <h2 class="about-sub-lead">
+            The Event Showcases Different Organizations And Specialization Areas Such As:
+          </h2>
+
+          <ul class="about-org-list">
+            <li>CyberSecurity Organization</li>
+            <li>Mafia Organization</li>
+            <li>Code Geeks</li>
+            <li>Loop</li>
+          </ul>
+
+          <a href="#details" class="btn-fox-adventure">
+            <span>ENTER THE FOX ADVENTURE</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: EVENT DETAILS & PHOTO GALLERY (Orange Strip)
+         ========================================================================== -->
+    <section class="details-section" id="details">
+      <div class="container details-grid">
+        
+        <!-- Left: Event Details Card -->
+        <div class="event-info-card">
+          <div class="event-info-card-hearts">
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+
+          <div class="card-header-with-icon">
+            <div class="card-header-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <h2 class="event-info-title">Event Details</h2>
+          </div>
+
+          <div class="info-subhead">What To Expect:</div>
+          <p class="info-expect-desc">
+            Each Organization Prepares Interactive Booths, Demonstrations, Games, Exhibits, And Activities Related To Their Specialization.
+          </p>
+
+          <div class="details-items-list">
+            <div class="details-row">
+              <div class="details-icon">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div>
+                <span class="details-label">Date:</span>
+                <span class="details-val">February 23-24, 2027</span>
+              </div>
+            </div>
+
+            <div class="details-row">
+              <div class="details-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <span class="details-label">Time:</span>
+                <span class="details-val">9:00am To 4:00pm</span>
+              </div>
+            </div>
+
+            <div class="details-row">
+              <div class="details-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <span class="details-label">Venue:</span>
+                <span class="details-val">SJH Building</span>
+              </div>
+            </div>
+
+            <div class="details-row">
+              <div class="details-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <span class="details-label">Contact Information:</span>
+                <span class="details-val">Dr. Mary Jane Rabena And Sir Bon Flores</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Photo Polaroids Cluster -->
+        <div class="polaroid-gallery-wrap">
+          <div class="see-you-there-text">See you there!!</div>
+
+          <div class="polaroids-cluster">
+            
+            <!-- Polaroid 1: Booths -->
+            <div class="polaroid-card">
+              <div class="tape-strip" aria-hidden="true"></div>
+              <div class="polaroid-media-box">
+                <!-- INSERT YOUR IMAGE HERE: Event Interactive Booths Photo (e.g. booth-photo.jpg) -->
+                <img src="vids,images/649282369_1557979173000753_6461318393873207750_n.jpg" alt="Event Interactive Booth Photo" class="polaroid-img" width="220" height="140" />
+              </div>
+              <div class="polaroid-caption">Interactive Booths</div>
+            </div>
+
+            <!-- Polaroid 2: Crowd -->
+            <div class="polaroid-card">
+              <div class="tape-strip" aria-hidden="true"></div>
+              <div class="polaroid-media-box">
+                <!-- INSERT YOUR IMAGE HERE: Auditorium Crowd Gathering Photo (e.g. auditorium-crowd.jpg) -->
+                <img src="vids,images/840308247_956555500334111_8510789120935924391_n.jpg" alt="Auditorium Crowd Gathering Photo" class="polaroid-img" width="220" height="140" />
+              </div>
+              <div class="polaroid-caption">SoC Assembly</div>
+            </div>
+
+            <!-- Polaroid 3: Mascot -->
+            <div class="polaroid-card">
+              <div class="tape-strip" aria-hidden="true"></div>
+              <div class="polaroid-media-box">
+                <!-- INSERT YOUR IMAGE HERE: Mascot with Students Photo (e.g. mascot-photo.jpg) -->
+                <img src="vids,images/714759255_1645881884210481_7375684768732861356_n.jpg" alt="Fox Mascot with Students Photo" class="polaroid-img" width="220" height="140" />
+              </div>
+              <div class="polaroid-caption">A Day with Foxes</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: FEATURED ORGANIZATIONS (With Logo Beside Org Names)
+         ========================================================================== -->
+    <section class="organizations-section" id="organizations">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="org-header-row">
+          <div class="org-title-group">
+            <div class="org-section-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2L15 8H9L12 2ZM4 6L8 10L6 14L2 8L4 6ZM20 6L22 8L18 14L16 10L20 6ZM5 14L8 12L12 17L16 12L19 14L15 21H9L5 14Z" /></svg>
+            </div>
+            <div>
+              <h2 class="org-section-title">Featured Organizations</h2>
+            </div>
+          </div>
+          <div class="org-section-tagline">
+            Rooted In Code, Driven By Purpose.
+          </div>
+        </div>
+
+        <!-- Organizations Grid (4 Columns) -->
+        <div class="org-cards-grid">
+          
+          <!-- Card 1: CODE GEEKS -->
+          <article class="org-card">
+            <div class="org-card-top">
+              <div class="org-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <h3 class="org-card-title">Code Geeks</h3>
+            </div>
+            <p class="org-card-desc">
+              Code Geeks Is A Student Organization For Aspiring Programmers And Software Developers. Members Enhance Their Coding Skills Through Programming Workshops, Coding Competitions, Collaborative Projects, And Technology-Focused Events While Building A Supportive Community Of Future Developers.
+            </p>
+            
+            <!-- Card Footer: Logo placed directly beside the name badge -->
+            <div class="org-card-footer">
+              <div class="org-footer-brand">
+                <!-- INSERT YOUR IMAGE HERE: Code Geeks Logo (e.g. code-geeks-logo.png) -->
+                <img src="vids,images/3D_LOGO-1-1.webp" alt="Code Geeks Logo" class="org-inline-logo" width="32" height="32" />
+                <span class="org-name-badge">CODE GEEKS</span>
+              </div>
+              <a href="#about" class="org-arrow-btn" aria-label="Learn more about Code Geeks">
+                <svg viewBox="0 0 24 24" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: CSIA -->
+          <article class="org-card">
+            <div class="org-card-top">
+              <div class="org-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <h3 class="org-card-title">Cybersecurity Intelligence Alliance</h3>
+            </div>
+            <p class="org-card-desc">
+              The Cybersecurity Intelligence Alliance (CSIA) Promotes Cybersecurity Awareness Through Engaging Workshops, Hands-On Activities, And Educational Programs That Equip Students With The Knowledge And Practical Skills Needed To Become Future Ethical Cybersecurity Professionals.
+            </p>
+            
+            <!-- Card Footer: Logo placed directly beside the name badge -->
+            <div class="org-card-footer">
+              <div class="org-footer-brand">
+                <!-- INSERT YOUR IMAGE HERE: CSIA Logo (e.g. csia-logo.png) -->
+                <img src="vids,images/image-removebg-preview.png" alt="CSIA Logo" class="org-inline-logo" width="32" height="32" />
+                <span class="org-name-badge">CSIA</span>
+              </div>
+              <a href="#about" class="org-arrow-btn" aria-label="Learn more about CSIA">
+                <svg viewBox="0 0 24 24" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: MAFIA -->
+          <article class="org-card">
+            <div class="org-card-top">
+              <div class="org-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              </div>
+              <h3 class="org-card-title">Multimedia Aficionados For Interested Artists (MAFIA)</h3>
+            </div>
+            <p class="org-card-desc">
+              Multimedia Aficionados For Interested Artists (MAFIA) Provides A Creative Space Where Students Develop Their Talents In Graphic Design, Photography, Videography, Animation, And Digital Storytelling While Collaborating With Fellow Artists On Exciting Multimedia Projects.
+            </p>
+            
+            <!-- Card Footer: Logo placed directly beside the name badge -->
+            <div class="org-card-footer">
+              <div class="org-footer-brand">
+                <!-- INSERT YOUR IMAGE HERE: MAFIA Logo (e.g. mafia-logo.png) -->
+                <img src="vids,images/image-removebg-preview (1).png" alt="MAFIA Logo" class="org-inline-logo" width="32" height="32" />
+                <span class="org-name-badge">MAFIA</span>
+              </div>
+              <a href="#about" class="org-arrow-btn" aria-label="Learn more about MAFIA">
+                <svg viewBox="0 0 24 24" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4: LOOP -->
+          <article class="org-card">
+            <div class="org-card-top">
+              <div class="org-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.26-8-12.356-8-5.096 0-5.096 8 0 8 5.096 0 7.261-8 12.356-8z"></path></svg>
+              </div>
+              <h3 class="org-card-title">Loop</h3>
+            </div>
+            <p class="org-card-desc">
+              Loop Is A Student-Led Organization Under The School Of Computing Dedicated To Helping Students Grow Their Technical Skills And Expand Their Professional Network. Through Coding Competitions, And Collaborative Events, Loop Creates Opportunities For Members To Learn, And Connect With The Computing Community.
+            </p>
+            
+            <!-- Card Footer: Logo placed directly beside the name badge -->
+            <div class="org-card-footer">
+              <div class="org-footer-brand">
+                <!-- INSERT YOUR IMAGE HERE: LOOP Logo (e.g. loop-logo.png) -->
+                <img src="vids,images/loop.png" alt="Loop Logo" class="org-inline-logo" width="32" height="32" />
+                <span class="org-name-badge">LOOP</span>
+              </div>
+              <a href="#about" class="org-arrow-btn" aria-label="Learn more about LOOP">
+                <svg viewBox="0 0 24 24" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: VIDEO SHOWCASE
+         ========================================================================== -->
+    <section class="video-section" id="video">
+      <div class="container">
+        <div class="video-divider-strip" aria-hidden="true"></div>
+
+        <div class="video-grid">
+          
+          <!-- Video Frame / Player -->
+          <div class="video-player-wrapper">
+            <!-- INSERT YOUR VIDEO HERE: ADF2027 Promotional Video (e.g. adf2027-promo.mp4) -->
+            <video src="vids,images/Vid_Webpub.mov" controls class="promo-video-tag" width="640" height="360" poster="">
+              Your browser does not support the video tag.
+            </video>
+
+            <!-- Video Player Interactive Mockup -->
+            <div class="video-art-mockup">
+              <div class="video-newspaper-bg"></div>
+              
+              <button class="play-btn-pulse" aria-label="Play Promotional Video" onclick="alert('Insert your promo video in index.html to play.');">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
+
+              <div style="margin-top: 16px; font-family: var(--font-display); font-size: 13px; font-weight: 700; color: #ff9d66; letter-spacing: 0.5px;">
+                ADF2027 OFFICIAL TEASER
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Text Info -->
+          <div class="video-info-col">
+            <h2 class="video-badge-title">ADF2027</h2>
+            <div class="video-sub-title">
+              A DAY WITH <span class="highlight-orange">THE FOXES</span>
+            </div>
+            <p class="video-desc">
+              The purpose of the video is to persuade visitors to explore the School of Computing and encourage them to participate in ADF2027.
+            </p>
+            <div>
+              <a href="#details" class="btn-fox-adventure">
+                <span>EXPLORE ACTIVITIES</span>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: ARCADE / READY TO JOIN (Arcade Image Slot)
+         ========================================================================== -->
+    <section class="cta-arcade-section" id="cta">
+      <div class="container">
+        
+        <!-- Header Sub-Divider -->
+        <div class="arcade-sub-header">
+          <div class="brand-group">
+            <div class="brand-title">
+              <span class="brand-adf" style="color:#20130c;">ADF</span><span class="brand-year">2027</span>
+            </div>
+            <span style="font-family: var(--font-display); font-size: 12px; color: #7a6354; font-weight: 600;">
+              Rooted In Code, Driven By Purpose.
+            </span>
+          </div>
+
+          <div class="pixel-hearts">
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <svg class="heart-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+        </div>
+
+        <div class="arcade-grid">
+          
+          <!-- Left: Arcade Machine Graphic Frame Slot -->
+          <div class="arcade-machine-wrap">
+            <div class="arcade-cabinet-frame">
+              <!-- INSERT YOUR IMAGE HERE: Arcade Machine Poster / Graphic (e.g. arcade-machine.png) -->
+              <img src="vids,images/Promotional Social.png" alt="Arcade Cabinet Graphic: A Day With The Foxes" class="arcade-graphic-img" width="440" height="440" />
+            </div>
+          </div>
+
+          <!-- Right: Ready To Join CTA -->
+          <div class="cta-content-col">
+            <div class="cta-mascot-avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2L15 8H9L12 2ZM4 6L8 10L6 14L2 8L4 6ZM20 6L22 8L18 14L16 10L20 6ZM5 14L8 12L12 17L16 12L19 14L15 21H9L5 14Z" />
+              </svg>
+            </div>
+
+            <h2 class="cta-heading-main">READY TO JOIN</h2>
+            <div class="cta-heading-sub">THE FOXES?</div>
+
+            <p class="cta-body-desc">
+              Experience games, activities, organizations, and the School of Computing community.
+            </p>
+
+            <a href="#details" class="btn-fox-adventure">
+              <span>ENTER THE FOX ADVENTURE</span>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SECTION 7: SITE FOOTER (Circular Seals)
+       ========================================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-inner">
+        
+        <!-- Left: University Seals -->
+        <div class="footer-institution-group">
+          <div class="footer-seals-wrap">
+            
+            <!-- Seal 1: School of Computing -->
+            <div class="footer-seal-badge" title="School of Computing Seal">
+              <!-- INSERT YOUR IMAGE HERE: School of Computing Seal (e.g. soc-seal.png) -->
+              <img src="vids,images/images.png" alt="School of Computing Seal" class="footer-seal-img" width="48" height="48" />
+              
+              <!-- Fallback SVG -->
+              <svg class="footer-seal-svg" viewBox="0 0 24 24">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+                <path d="M2 12L12 17L22 12L12 14.5L2 12Z" />
+                <path d="M2 17L12 22L22 17L12 19.5L2 17Z" />
+              </svg>
+            </div>
+
+            <!-- Seal 2: Holy Angel University -->
+            <div class="footer-seal-badge" title="Holy Angel University Seal">
+              <!-- INSERT YOUR IMAGE HERE: Holy Angel University Seal (e.g. hau-seal.png) -->
+              <img src="vids,images/logo-circle.png" alt="Holy Angel University Seal" class="footer-seal-img" width="48" height="48" />
+              
+              <!-- Fallback SVG -->
+              <svg class="footer-seal-svg" viewBox="0 0 24 24">
+                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3ZM5 13.18V17.18C5 19.84 8.13 22 12 22C15.87 22 19 19.84 19 17.18V13.18L12 17L5 13.18Z" />
+              </svg>
+            </div>
+
+          </div>
+
+          <div class="footer-institution-name">
+            Holy Angel University<br>School Of Computing
+          </div>
+        </div>
+
+        <!-- Right: Official Contact Details -->
+        <div class="footer-contacts-list">
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>#1 Holy Angel Avenue, Sto. Rosario, Angeles City, Philippines 2009</span>
+          </div>
+
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:630456255748">(63) 045-625-5748</a>
+          </div>
+
+          <div class="footer-contact-row">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:Admissions@Hau.Edu.Ph">Admissions@Hau.Edu.Ph</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <div>&copy; 2027 Holy Angel University - School of Computing. All rights reserved.</div>
+        <div>ADF2027: A Day With The Foxes</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Light Vanilla Script for Mobile Navigation Toggle -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteNav = document.getElementById('site-nav');
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('is-open');
+      });
+      siteNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          siteNav.classList.remove('is-open');
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

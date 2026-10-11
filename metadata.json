@@ -1,0 +1,6 @@
+{
+  "name": "ADF2027: A Day With The Foxes",
+  "description": "Annual School of Computing event website for Holy Angel University, featuring student organizations, event details, interactive activities, and showcase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
